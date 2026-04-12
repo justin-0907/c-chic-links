@@ -83,7 +83,7 @@ export default function Home() {
             <img
               src="https://d2xsxph8kpxj0f.cloudfront.net/310519663542665447/iWexjsgpwWbWCoJ7e6xKKb/cchic-logo-user_9264d1af.png"
               alt="C.CHIC Logo"
-              className="w-80 h-auto drop-shadow-lg"
+              className="w-80 h-auto drop-shadow-lg pb-[100px]"
             />
           </div>
 
