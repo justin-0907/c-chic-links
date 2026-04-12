@@ -78,24 +78,16 @@ export default function Home() {
 
         {/* Brand Logo and Title */}
         <div className="absolute inset-0 flex flex-col items-center justify-center">
-          {/* Brand Icon */}
+          {/* Brand Logo with Title */}
           <div className="mb-6 opacity-0 animate-in fade-in duration-700 fill-mode-forwards">
             <img
-              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663542665447/iWexjsgpwWbWCoJ7e6xKKb/brand-icon-XtQ4EpyneEsMCsroLMrvme.webp"
+              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663542665447/iWexjsgpwWbWCoJ7e6xKKb/cchic-logo-title-compressed.webp"
               alt="C.CHIC Logo"
-              className="w-24 h-24 drop-shadow-lg"
+              className="w-64 h-auto drop-shadow-lg"
             />
           </div>
 
-          {/* Brand Name */}
-          <h1 className="font-display text-5xl md:text-6xl font-bold text-foreground text-center drop-shadow-md opacity-0 animate-in fade-in duration-700 delay-100 fill-mode-forwards">
-            C.CHIC
-          </h1>
 
-          {/* Tagline */}
-          <p className="font-serif text-lg md:text-xl text-foreground/80 mt-3 text-center drop-shadow-sm opacity-0 animate-in fade-in duration-700 delay-200 fill-mode-forwards">
-            精緻髮飾 · 優雅風格
-          </p>
         </div>
       </div>
 
