@@ -1,25 +1,206 @@
-import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
-import { Streamdown } from 'streamdown';
+import { ExternalLink, Instagram, MessageCircle, Globe } from "lucide-react";
+import { useState, useEffect } from "react";
 
 /**
- * All content in this page are only for example, replace with your own feature implementation
- * When building pages, remember your instructions in Frontend Best Practices, Design Guide and Common Pitfalls
+ * C.CHIC Home Page - Warm Minimalism Design
+ * 
+ * Design Philosophy:
+ * - Minimalist layout with ample whitespace
+ * - Warm beige background (#E8DCC8) with gold accents (#D4A574)
+ * - Elegant typography: Playfair Display for titles, Lora for body
+ * - Subtle shadows and hover effects for depth
+ * - Smooth animations for page load and interactions
  */
+
+interface LinkCard {
+  id: string;
+  title: string;
+  description: string;
+  url: string;
+  icon: React.ReactNode;
+  color: string;
+}
+
+const linkCards: LinkCard[] = [
+  {
+    id: "website",
+    title: "官方網站",
+    description: "瀏覽我們的完整髮飾系列",
+    url: "#",
+    icon: <Globe className="w-8 h-8" />,
+    color: "from-amber-100 to-amber-50",
+  },
+  {
+    id: "instagram",
+    title: "Instagram",
+    description: "追蹤最新的髮飾造型靈感",
+    url: "#",
+    icon: <Instagram className="w-8 h-8" />,
+    color: "from-pink-100 to-pink-50",
+  },
+  {
+    id: "myship",
+    title: "7-11 賣貨便",
+    description: "便利超商取貨購物",
+    url: "#",
+    icon: <ExternalLink className="w-8 h-8" />,
+    color: "from-green-100 to-green-50",
+  },
+  {
+    id: "line",
+    title: "官方 Line",
+    description: "客服諮詢與最新優惠資訊",
+    url: "#",
+    icon: <MessageCircle className="w-8 h-8" />,
+    color: "from-blue-100 to-blue-50",
+  },
+];
+
 export default function Home() {
-  // If theme is switchable in App.tsx, we can implement theme toggling like this:
-  // const { theme, toggleTheme } = useTheme();
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    // Trigger animation on mount
+    setIsLoaded(true);
+  }, []);
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <main>
-        {/* Example: lucide-react for icons */}
-        <Loader2 className="animate-spin" />
-        Example Page
-        {/* Example: Streamdown for markdown rendering */}
-        <Streamdown>Any **markdown** content</Streamdown>
-        <Button variant="default">Example Button</Button>
-      </main>
+    <div className="min-h-screen bg-background text-foreground">
+      {/* Hero Section with Background Image */}
+      <div
+        className="relative h-96 bg-cover bg-center overflow-hidden"
+        style={{
+          backgroundImage: `url('https://d2xsxph8kpxj0f.cloudfront.net/310519663542665447/iWexjsgpwWbWCoJ7e6xKKb/hero-background-bFR9B6CdM5M8gEBCf8if8H.webp')`,
+        }}
+      >
+        {/* Overlay gradient for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/80" />
+
+        {/* Brand Logo and Title */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center">
+          {/* Brand Icon */}
+          <div className="mb-6 opacity-0 animate-in fade-in duration-700 fill-mode-forwards">
+            <img
+              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663542665447/iWexjsgpwWbWCoJ7e6xKKb/brand-icon-XtQ4EpyneEsMCsroLMrvme.webp"
+              alt="C.CHIC Logo"
+              className="w-24 h-24 drop-shadow-lg"
+            />
+          </div>
+
+          {/* Brand Name */}
+          <h1 className="font-display text-5xl md:text-6xl font-bold text-foreground text-center drop-shadow-md opacity-0 animate-in fade-in duration-700 delay-100 fill-mode-forwards">
+            C.CHIC
+          </h1>
+
+          {/* Tagline */}
+          <p className="font-serif text-lg md:text-xl text-foreground/80 mt-3 text-center drop-shadow-sm opacity-0 animate-in fade-in duration-700 delay-200 fill-mode-forwards">
+            精緻髮飾 · 優雅風格
+          </p>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="container py-16 md:py-24">
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <h2 className="font-display text-3xl md:text-4xl font-semibold text-foreground mb-4">
+            選擇您的購物方式
+          </h2>
+          <div className="w-16 h-1 bg-accent mx-auto rounded-full" />
+        </div>
+
+        {/* Link Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+          {linkCards.map((card, index) => (
+            <a
+              key={card.id}
+              href={card.url}
+              className={`group relative overflow-hidden rounded-lg border-2 border-border bg-card p-8 transition-all duration-300 hover:border-accent hover:shadow-xl hover:-translate-y-1 cursor-pointer opacity-0 animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-forwards`}
+              style={{
+                animationDelay: isLoaded ? `${(index + 1) * 100}ms` : "0ms",
+              }}
+            >
+              {/* Background Accent Pattern */}
+              <div
+                className={`absolute inset-0 bg-gradient-to-br ${card.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
+              />
+
+              {/* Content */}
+              <div className="relative z-10">
+                {/* Icon */}
+                <div className="mb-4 text-accent group-hover:scale-110 transition-transform duration-300">
+                  {card.icon}
+                </div>
+
+                {/* Title */}
+                <h3 className="font-display text-2xl font-semibold text-foreground mb-2 group-hover:text-accent transition-colors duration-300">
+                  {card.title}
+                </h3>
+
+                {/* Description */}
+                <p className="font-serif text-sm md:text-base text-foreground/70 mb-4 group-hover:text-foreground transition-colors duration-300">
+                  {card.description}
+                </p>
+
+                {/* Arrow Indicator */}
+                <div className="flex items-center text-accent font-semibold text-sm">
+                  前往
+                  <ExternalLink className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+                </div>
+              </div>
+
+              {/* Subtle border animation on hover */}
+              <div className="absolute inset-0 rounded-lg border-2 border-accent opacity-0 group-hover:opacity-50 transition-opacity duration-300 pointer-events-none" />
+            </a>
+          ))}
+        </div>
+      </div>
+
+      {/* Footer */}
+      <footer className="border-t border-border bg-card/50 py-8 mt-16">
+        <div className="container text-center">
+          <p className="font-serif text-sm text-foreground/60">
+            © 2024 C.CHIC. All rights reserved.
+          </p>
+          <p className="font-serif text-xs text-foreground/40 mt-2">
+            精緻髮飾 · 優雅風格
+          </p>
+        </div>
+      </footer>
+
+      {/* Animation Styles */}
+      <style>{`
+        @keyframes slide-in-from-bottom-4 {
+          from {
+            opacity: 0;
+            transform: translateY(1rem);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .animate-in {
+          animation: slide-in-from-bottom-4 forwards;
+        }
+
+        .slide-in-from-bottom-4 {
+          animation: slide-in-from-bottom-4 forwards;
+        }
+
+        .fill-mode-forwards {
+          animation-fill-mode: forwards;
+        }
+
+        .delay-100 {
+          animation-delay: 100ms;
+        }
+
+        .delay-200 {
+          animation-delay: 200ms;
+        }
+      `}</style>
     </div>
   );
 }
