@@ -81,9 +81,9 @@ export default function Home() {
           {/* Brand Logo with Title */}
           <div className="mb-6 opacity-0 animate-in fade-in duration-700 fill-mode-forwards">
             <img
-              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663542665447/iWexjsgpwWbWCoJ7e6xKKb/cchic-logo-hq-JHFvHrSwhdQQXSBPPrUt3F.webp"
+              src="https://files.manuscdn.com/canvas/images/2026/04/12/2f309a2d-527c-4811-a786-832333bf3725.png"
               alt="C.CHIC Logo"
-              className="w-96 h-auto drop-shadow-lg pb-[100px]"
+              className="w-[584px] h-auto drop-shadow-lg pb-[100px]"
             />
           </div>
 
