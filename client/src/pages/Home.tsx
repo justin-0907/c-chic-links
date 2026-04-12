@@ -81,9 +81,9 @@ export default function Home() {
           {/* Brand Logo with Title */}
           <div className="mb-6 opacity-0 animate-in fade-in duration-700 fill-mode-forwards">
             <img
-              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663542665447/iWexjsgpwWbWCoJ7e6xKKb/cchic-logo-title-compressed.webp"
+              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663542665447/iWexjsgpwWbWCoJ7e6xKKb/cchic-logo-new-QMniwYtULjpvsbafTS8Woq.webp"
               alt="C.CHIC Logo"
-              className="w-64 h-auto drop-shadow-lg"
+              className="w-80 h-auto drop-shadow-lg"
             />
           </div>
 
