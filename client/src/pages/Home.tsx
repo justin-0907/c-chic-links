@@ -184,7 +184,7 @@ export default function Home() {
       <footer className="border-t border-border bg-card/50 py-8 mt-16">
         <div className="container text-center">
           <p className="font-serif text-sm text-foreground/60">
-            © 2024 C.CHIC. All rights reserved.
+            © 2026 C.CHIC. All rights reserved.
           </p>
           <p className="font-serif text-xs text-foreground/40 mt-2">
             澄澄出品 · 優雅風格
