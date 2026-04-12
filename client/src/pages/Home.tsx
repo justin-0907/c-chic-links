@@ -146,6 +146,38 @@ export default function Home() {
             </a>
           ))}
         </div>
+
+        {/* Brand Story Section */}
+        <div className="mt-24 pt-16 border-t border-border/30">
+          <div className="max-w-3xl mx-auto">
+            {/* Section Title */}
+            <div className="text-center mb-12">
+              <h2 className="font-display text-3xl md:text-4xl font-semibold text-foreground mb-4">
+                我們的故事
+              </h2>
+              <div className="w-16 h-1 bg-accent mx-auto rounded-full" />
+            </div>
+
+            {/* Brand Story Content */}
+            <div className="space-y-6 opacity-0 animate-in fade-in duration-700 fill-mode-forwards" style={{ animationDelay: "600ms" }}>
+              <p className="font-serif text-lg text-foreground/80 leading-relaxed">
+                C.CHIC 源於對優雅的執著與對夢想的堅持。我們相信，每一件髮飾都不僅是裝飾品，更是展現個人風格與品味的藝術作品。
+              </p>
+              
+              <p className="font-serif text-lg text-foreground/80 leading-relaxed">
+                從精選每一根珍珠、每一條絲帶，到精心設計每一個細節，我們致力於為您打造兼具精緻感與實穿性的髮飾。每一次的設計創新，都源於我們對美的追求與對您的了解。
+              </p>
+              
+              <p className="font-serif text-lg text-foreground/80 leading-relaxed">
+                「DREAMS COME TRUE」不只是我們的標語，更是我們的承諾。我們希望透過 C.CHIC 的髮飾，讓您在每一個重要時刻都能綻放自信與優雅，讓夢想在每一次佩戴中成真。
+              </p>
+              
+              <p className="font-serif text-base text-foreground/60 italic mt-8">
+                — 感謝您選擇 C.CHIC，一起譜寫優雅的故事。
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Footer */}
