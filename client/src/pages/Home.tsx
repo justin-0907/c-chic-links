@@ -60,16 +60,16 @@ export default function Home() {
 
       {/* 1. 全螢幕沉浸式 Hero 區塊 */}
       <div
-        className="relative w-full h-[85vh] bg-zinc-900 bg-cover bg-center bg-fixed flex flex-col justify-between"
+        className="relative w-full h-[85vh] bg-white bg-cover bg-center bg-fixed flex flex-col justify-between"
         style={{
-          backgroundImage: `url('https://d2xsxph8kpxj0f.cloudfront.net/310519663542665447/iWexjsgpwWbWCoJ7e6xKKb/hero-background-bFR9B6CdM5M8gEBCf8if8H.webp')`,
+          backgroundImage: `url('https://d2xsxph8kpxj0f.cloudfront.net/310519663542665447/iWexjsgpwWbWCoJ7e6xKKb/cglow-hero-luxury-fzZaPnTobwGTwHeAhcUG9M.webp')`,
         }}
       >
-        <div className="absolute inset-0 bg-black/30" />
+        <div className="absolute inset-0 bg-white/5" />
 
         <header className="relative z-10 w-full p-8 flex justify-center opacity-0 animate-in fade-in duration-1000">
-          <p className="text-white/70 text-xs tracking-[0.4em] uppercase font-light">
-            Maison C.CHIC
+          <p className="text-gray-600 text-xs tracking-[0.4em] uppercase font-light">
+            Maison C.GLOW
           </p>
         </header>
 
@@ -88,9 +88,9 @@ export default function Home() {
           href="#explore" 
           className="relative z-10 w-full pb-12 flex flex-col items-center justify-center opacity-0 animate-in fade-in duration-1000 delay-500 hover:opacity-70 transition-opacity cursor-pointer"
         >
-          <p className="text-white/60 text-[10px] tracking-[0.3em] uppercase mb-4">Scroll to explore</p>
-          <div className="w-px h-12 bg-white/40 overflow-hidden">
-            <div className="w-full h-full bg-white origin-top animate-scroll-line" />
+          <p className="text-gray-500 text-[10px] tracking-[0.3em] uppercase mb-4">Scroll to explore</p>
+          <div className="w-px h-12 bg-gray-400 overflow-hidden">
+            <div className="w-full h-full bg-gray-500 origin-top animate-scroll-line" />
           </div>
         </a>
       </div>
