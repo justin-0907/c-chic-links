@@ -81,8 +81,8 @@ export default function Home() {
           {/* Brand Logo with Title */}
           <div className="mb-6 opacity-0 animate-in fade-in duration-700 fill-mode-forwards">
             <img
-              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663542665447/iWexjsgpwWbWCoJ7e6xKKb/cgrow-select-logo_5c7e89e9.png"
-              alt="C.GROW SELECT Logo"
+              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663542665447/iWexjsgpwWbWCoJ7e6xKKb/crlow-select-logo_946233f3.png"
+              alt="C.RLOW SELECT Logo"
               className="w-[584px] h-auto drop-shadow-lg pb-[100px]"
             />
           </div>
@@ -161,19 +161,19 @@ export default function Home() {
             {/* Brand Story Content */}
             <div className="space-y-6 opacity-0 animate-in fade-in duration-700 fill-mode-forwards" style={{ animationDelay: "600ms" }}>
               <p className="font-serif text-lg text-foreground/80 leading-relaxed">
-                C.CHIC 源於對優雅的執著與對夢想的堅持。我們相信，每一件髮飾都不僅是裝飾品，更是展現個人風格與品味的藝術作品。
+                C.RLOW SELECT 源於對精選的執著與對光彩的追求。我們相信，每一件髮飾都應該散發獨特的光芒，讓佩戴者在任何時刻都能展現自信與魅力。
               </p>
               
               <p className="font-serif text-lg text-foreground/80 leading-relaxed">
-                從精選每一根珍珠、每一條絲帶，到精心設計每一個細節，我們致力於為您打造兼具精緻感與實穿性的髮飾。每一次的設計創新，都源於我們對美的追求與對您的了解。
+                我們精心挑選每一款設計、每一種材質，只為呈現最優雅的髮飾系列。從經典到創新，從簡約到華麗，C.RLOW SELECT 提供多元選擇，讓您根據心情與場景自由搭配，展現獨一無二的個人風格。
               </p>
               
               <p className="font-serif text-lg text-foreground/80 leading-relaxed">
-                「DREAMS COME TRUE」不只是我們的標語，更是我們的承諾。我們希望透過 C.CHIC 的髮飾，讓您在每一個重要時刻都能綻放自信與優雅，讓夢想在每一次佩戴中成真。
+                「DREAMS COME TRUE」是我們的願景。透過 C.RLOW SELECT 精選的髮飾，我們希望幫助您在每一個重要時刻閃閃發光，讓自信與優雅成為您最好的配飾，讓每一個夢想都在光彩中綻放。
               </p>
               
               <p className="font-serif text-base text-foreground/60 italic mt-8">
-                — 感謝您選擇 C.CHIC，一起譜寫優雅的故事。
+                — 感謝您選擇 C.RLOW SELECT，一起發光發熱。
               </p>
             </div>
           </div>
