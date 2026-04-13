@@ -58,23 +58,25 @@ export default function Home() {
       
       <h1 className="sr-only">C.CHIC / C.GLOW - 極簡優雅髮飾與精品配件品牌</h1>
 
-      {/* 1. 全螢幕沉浸式 Hero 區塊 */}
-      <div
-        className="relative w-full h-[85vh] bg-cover bg-center bg-fixed flex flex-col justify-between"
-        style={{
-          backgroundImage: `url('https://d2xsxph8kpxj0f.cloudfront.net/310519663542665447/iWexjsgpwWbWCoJ7e6xKKb/cglow-hero-bg_c6fe2f39.png')`,
-          backgroundColor: '#F8F7F5',
-        }}
-      >
-        <div className="absolute inset-0 bg-white/5" />
-
+      {/* 1. 全螢幕沉浸式 Hero 區塊 (將背景改為純白 bg-white) */}
+      <div className="relative w-full h-[85vh] bg-white flex flex-col justify-between">
+        
         <header className="relative z-10 w-full p-8 flex justify-center opacity-0 animate-in fade-in duration-1000">
-          <p className="text-gray-500 text-xs tracking-[0.4em] uppercase font-light">
+          <p className="text-gray-400 text-xs tracking-[0.4em] uppercase font-light">
             Maison C.GLOW
           </p>
         </header>
 
+        {/* 將圖片放回這裡，並控制大小 */}
         <div className="relative z-10 flex flex-col items-center justify-center flex-grow">
+          <div className="opacity-0 animate-in fade-in slide-in-from-bottom-8 duration-1000 fill-mode-forwards">
+            <img
+              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663542665447/iWexjsgpwWbWCoJ7e6xKKb/cglow-hero-bg_c6fe2f39.png"
+              alt="C.GLOW Logo"
+              /* 調整寬度，避免變得太大，mix-blend-multiply 可以確保邊緣完美融入白色背景 */
+              className="w-[500px] md:w-[900px] h-auto object-contain mix-blend-multiply"
+            />
+          </div>
         </div>
 
         {/* 底部滑動提示 */}
@@ -82,9 +84,9 @@ export default function Home() {
           href="#explore" 
           className="relative z-10 w-full pb-12 flex flex-col items-center justify-center opacity-0 animate-in fade-in duration-1000 delay-500 hover:opacity-70 transition-opacity cursor-pointer"
         >
-          <p className="text-gray-500 text-[10px] tracking-[0.3em] uppercase mb-4">Scroll to explore</p>
-          <div className="w-px h-12 bg-gray-400 overflow-hidden">
-            <div className="w-full h-full bg-gray-500 origin-top animate-scroll-line" />
+          <p className="text-gray-400 text-[10px] tracking-[0.3em] uppercase mb-4">Scroll to explore</p>
+          <div className="w-px h-12 bg-gray-200 overflow-hidden">
+            <div className="w-full h-full bg-gray-400 origin-top animate-scroll-line" />
           </div>
         </a>
       </div>
@@ -101,7 +103,6 @@ export default function Home() {
                 animationDelay: isLoaded ? `${(index + 1) * 150}ms` : "0ms",
               }}
             >
-              {/* 背景滑動特效 (黑白反轉) - 僅限電腦版 */}
               <div className="absolute inset-0 bg-black translate-y-[101%] md:group-hover:translate-y-0 transition-transform duration-700 ease-[cubic-bezier(0.65,0,0.35,1)]" />
 
               <div className="relative z-10 flex flex-col pointer-events-none">
@@ -113,7 +114,6 @@ export default function Home() {
                 </h3>
               </div>
 
-              {/* 箭頭 Icon - 手機版常駐半透明，電腦版 hover 浮現 */}
               <div className="relative z-10 mt-6 md:mt-0 text-black md:group-hover:text-white transition-colors duration-700 flex justify-end pointer-events-none">
                 <ArrowRight className="w-6 h-6 md:w-8 md:h-8 stroke-[1] opacity-40 translate-x-0 md:opacity-0 md:-translate-x-4 md:group-hover:translate-x-0 md:group-hover:opacity-100 transition-all duration-700 ease-out" />
               </div>
@@ -156,7 +156,6 @@ export default function Home() {
         </div>
       </footer>
 
-      {/* 極致平滑的純 CSS 動畫 */}
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@300;400&display=swap');
 
