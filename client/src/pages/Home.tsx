@@ -81,8 +81,8 @@ export default function Home() {
           {/* Brand Logo with Title */}
           <div className="mb-6 opacity-0 animate-in fade-in duration-700 fill-mode-forwards">
             <img
-              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663542665447/iWexjsgpwWbWCoJ7e6xKKb/crlow-select-logo_946233f3.png"
-              alt="C.RLOW SELECT Logo"
+              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663542665447/iWexjsgpwWbWCoJ7e6xKKb/cglow-logo_6dd5d121.png"
+              alt="C.GLOW Logo"
               className="w-[584px] h-auto drop-shadow-lg pb-[100px]"
             />
           </div>
@@ -161,19 +161,19 @@ export default function Home() {
             {/* Brand Story Content */}
             <div className="space-y-6 opacity-0 animate-in fade-in duration-700 fill-mode-forwards" style={{ animationDelay: "600ms" }}>
               <p className="font-serif text-lg text-foreground/80 leading-relaxed">
-                C.RLOW SELECT 源於對精選的執著與對光彩的追求。我們相信，每一件髮飾都應該散發獨特的光芒，讓佩戴者在任何時刻都能展現自信與魅力。
+                C.GLOW 源於對光彩的執著與對優雅的追求。我們相信，每一件髮飾都應該続放獨特的光芒，讓佩戴者在任何時刻都能以最佳的狀態閥謝光彩。
               </p>
               
               <p className="font-serif text-lg text-foreground/80 leading-relaxed">
-                我們精心挑選每一款設計、每一種材質，只為呈現最優雅的髮飾系列。從經典到創新，從簡約到華麗，C.RLOW SELECT 提供多元選擇，讓您根據心情與場景自由搭配，展現獨一無二的個人風格。
+                我們精心挑選每一款設計、每一種材質，只為展現最優雅的髮飾系列。從經典到創新，從簡約到華麗，C.GLOW 提供多元選擇，讓您根據心情與場景自由搭配，展現獨一無二的個人風格。
               </p>
               
               <p className="font-serif text-lg text-foreground/80 leading-relaxed">
-                「DREAMS COME TRUE」是我們的願景。透過 C.RLOW SELECT 精選的髮飾，我們希望幫助您在每一個重要時刻閃閃發光，讓自信與優雅成為您最好的配飾，讓每一個夢想都在光彩中綻放。
+                「DREAMS COME TRUE」是我們的願景。透過 C.GLOW 的髮飾，我們希望幫助您在每一個重要時刻都能以最佳的光芒閥謝自己，讓自信與優雅成為您最好的配飾，讓每一個夢想都在光彩中綻放。
               </p>
               
               <p className="font-serif text-base text-foreground/60 italic mt-8">
-                — 感謝您選擇 C.RLOW SELECT，一起發光發熱。
+                — 感謝您選擇 C.GLOW，一起閥謝光彩。
               </p>
             </div>
           </div>
