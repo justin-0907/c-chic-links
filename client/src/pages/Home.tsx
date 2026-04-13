@@ -1,58 +1,48 @@
-import { ExternalLink, Instagram, MessageCircle, Globe } from "lucide-react";
+"use client";
+
+import { ArrowRight } from "lucide-react";
 import { useState, useEffect } from "react";
 
 /**
- * C.CHIC Home Page - Warm Minimalism Design
- * 
- * Design Philosophy:
- * - Minimalist layout with ample whitespace
- * - Warm beige background (#E8DCC8) with gold accents (#D4A574)
- * - Elegant typography: Playfair Display for titles, Lora for body
- * - Subtle shadows and hover effects for depth
- * - Smooth animations for page load and interactions
+ * C.CHIC Home Page - High Fashion / Editorial Style (Chanel-inspired)
+ * * Design Philosophy:
+ * - Extreme Minimalism: Black, white, and subtle greys only.
+ * - Borderless: No traditional "cards". Using fine lines and ample whitespace.
+ * - Typography: Wide tracking (letter spacing), strong contrast between serif and sans-serif.
+ * - Editorial Flow: Looks like a fashion magazine cover and index.
  */
 
 interface LinkCard {
   id: string;
+  subtitle: string;
   title: string;
-  description: string;
   url: string;
-  icon: React.ReactNode;
-  color: string;
 }
 
 const linkCards: LinkCard[] = [
   {
     id: "website",
+    subtitle: "DISCOVER THE COLLECTION",
     title: "官方網站",
-    description: "瀏覽我們的完整髮飾系列",
     url: "#",
-    icon: <Globe className="w-8 h-8" />,
-    color: "from-amber-100 to-amber-50",
   },
   {
     id: "instagram",
+    subtitle: "LATEST INSPIRATION",
     title: "Instagram",
-    description: "追蹤最新的髮飾造型靈感",
     url: "#",
-    icon: <Instagram className="w-8 h-8" />,
-    color: "from-pink-100 to-pink-50",
   },
   {
     id: "myship",
+    subtitle: "CONVENIENT SHOPPING",
     title: "7-11 賣貨便",
-    description: "便利超商取貨購物",
     url: "#",
-    icon: <ExternalLink className="w-8 h-8" />,
-    color: "from-green-100 to-green-50",
   },
   {
     id: "line",
+    subtitle: "CLIENT SERVICES",
     title: "官方 Line",
-    description: "客服諮詢與最新優惠資訊",
     url: "#",
-    icon: <MessageCircle className="w-8 h-8" />,
-    color: "from-blue-100 to-blue-50",
   },
 ];
 
@@ -60,169 +50,148 @@ export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    // Trigger animation on mount
     setIsLoaded(true);
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      {/* Hero Section with Background Image */}
+    <div className="relative min-h-screen bg-white text-black overflow-x-hidden selection:bg-black selection:text-white scroll-smooth">
+      
+      <h1 className="sr-only">C.CHIC / C.GLOW - 極簡優雅髮飾與精品配件品牌</h1>
+
+      {/* 1. 全螢幕沉浸式 Hero 區塊 */}
       <div
-        className="relative h-96 bg-cover bg-center overflow-hidden"
+        className="relative w-full h-[85vh] bg-zinc-900 bg-cover bg-center bg-fixed flex flex-col justify-between"
         style={{
           backgroundImage: `url('https://d2xsxph8kpxj0f.cloudfront.net/310519663542665447/iWexjsgpwWbWCoJ7e6xKKb/hero-background-bFR9B6CdM5M8gEBCf8if8H.webp')`,
         }}
       >
-        {/* Overlay gradient for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/80" />
+        <div className="absolute inset-0 bg-black/30" />
 
-        {/* Brand Logo and Title */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center">
-          {/* Brand Logo with Title */}
-          <div className="mb-6 opacity-0 animate-in fade-in duration-700 fill-mode-forwards">
+        <header className="relative z-10 w-full p-8 flex justify-center opacity-0 animate-in fade-in duration-1000">
+          <p className="text-white/70 text-xs tracking-[0.4em] uppercase font-light">
+            Maison C.CHIC
+          </p>
+        </header>
+
+        <div className="relative z-10 flex flex-col items-center justify-center flex-grow">
+          <div className="opacity-0 animate-in fade-in slide-in-from-bottom-8 duration-1000 fill-mode-forwards">
             <img
               src="https://d2xsxph8kpxj0f.cloudfront.net/310519663542665447/iWexjsgpwWbWCoJ7e6xKKb/cglow-logo-transparent_1c0761ac.png"
               alt="C.GLOW Logo"
-              className="w-[584px] h-auto drop-shadow-lg pb-[100px]"
+              className="w-[400px] md:w-[600px] h-auto drop-shadow-2xl"
             />
           </div>
-
-
         </div>
+
+        {/* 底部滑動提示 */}
+        <a 
+          href="#explore" 
+          className="relative z-10 w-full pb-12 flex flex-col items-center justify-center opacity-0 animate-in fade-in duration-1000 delay-500 hover:opacity-70 transition-opacity cursor-pointer"
+        >
+          <p className="text-white/60 text-[10px] tracking-[0.3em] uppercase mb-4">Scroll to explore</p>
+          <div className="w-px h-12 bg-white/40 overflow-hidden">
+            <div className="w-full h-full bg-white origin-top animate-scroll-line" />
+          </div>
+        </a>
       </div>
 
-      {/* Main Content */}
-      <div className="container py-16 md:py-24">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="font-display text-3xl md:text-4xl font-semibold text-foreground mb-4">
-            選擇您的購物方式
-          </h2>
-          <div className="w-16 h-1 bg-accent mx-auto rounded-full" />
-        </div>
-
-        {/* Link Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+      {/* 2. 精品清單式導覽 */}
+      <div id="explore" className="w-full max-w-4xl mx-auto px-6 py-24 md:py-32">
+        <div className="flex flex-col w-full border-t border-black/20">
           {linkCards.map((card, index) => (
             <a
               key={card.id}
               href={card.url}
-              className={`group relative overflow-hidden rounded-lg border-2 border-border bg-card p-8 transition-all duration-300 hover:border-accent hover:shadow-xl hover:-translate-y-1 cursor-pointer opacity-0 animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-forwards`}
+              className={`group relative w-full border-b border-black/20 py-10 md:py-14 flex flex-col md:flex-row md:justify-between md:items-center overflow-hidden cursor-pointer opacity-0 animate-in fade-in duration-1000 fill-mode-forwards active:bg-black/5 active:scale-[0.99] transition-all`}
               style={{
-                animationDelay: isLoaded ? `${(index + 1) * 100}ms` : "0ms",
+                animationDelay: isLoaded ? `${(index + 1) * 150}ms` : "0ms",
               }}
             >
-              {/* Background Accent Pattern */}
-              <div
-                className={`absolute inset-0 bg-gradient-to-br ${card.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
-              />
+              {/* 背景滑動特效 (黑白反轉) - 僅限電腦版 */}
+              <div className="absolute inset-0 bg-black translate-y-[101%] md:group-hover:translate-y-0 transition-transform duration-700 ease-[cubic-bezier(0.65,0,0.35,1)]" />
 
-              {/* Content */}
-              <div className="relative z-10">
-                {/* Icon */}
-                <div className="mb-4 text-accent group-hover:scale-110 transition-transform duration-300">
-                  {card.icon}
-                </div>
-
-                {/* Title */}
-                <h3 className="font-display text-2xl font-semibold text-foreground mb-2 group-hover:text-accent transition-colors duration-300">
+              <div className="relative z-10 flex flex-col pointer-events-none">
+                <span className="text-[10px] md:text-xs font-sans tracking-[0.3em] uppercase text-black/50 md:group-hover:text-white/60 transition-colors duration-700 mb-2 md:mb-4">
+                  {card.subtitle}
+                </span>
+                <h3 className="font-display text-2xl md:text-4xl font-light text-black md:group-hover:text-white transition-colors duration-700">
                   {card.title}
                 </h3>
-
-                {/* Description */}
-                <p className="font-serif text-sm md:text-base text-foreground/70 mb-4 group-hover:text-foreground transition-colors duration-300">
-                  {card.description}
-                </p>
-
-                {/* Arrow Indicator */}
-                <div className="flex items-center text-accent font-semibold text-sm">
-                  前往
-                  <ExternalLink className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-                </div>
               </div>
 
-              {/* Subtle border animation on hover */}
-              <div className="absolute inset-0 rounded-lg border-2 border-accent opacity-0 group-hover:opacity-50 transition-opacity duration-300 pointer-events-none" />
+              {/* 箭頭 Icon - 手機版常駐半透明，電腦版 hover 浮現 */}
+              <div className="relative z-10 mt-6 md:mt-0 text-black md:group-hover:text-white transition-colors duration-700 flex justify-end pointer-events-none">
+                <ArrowRight className="w-6 h-6 md:w-8 md:h-8 stroke-[1] opacity-40 translate-x-0 md:opacity-0 md:-translate-x-4 md:group-hover:translate-x-0 md:group-hover:opacity-100 transition-all duration-700 ease-out" />
+              </div>
             </a>
           ))}
         </div>
+      </div>
 
-        {/* Brand Story Section */}
-        <div className="mt-24 pt-16 border-t border-border/30">
-          <div className="max-w-3xl mx-auto">
-            {/* Section Title */}
-            <div className="text-center mb-12">
-              <h2 className="font-display text-3xl md:text-4xl font-semibold text-foreground mb-4">
-                我們的故事
-              </h2>
-              <div className="w-16 h-1 bg-accent mx-auto rounded-full" />
-            </div>
+      {/* 3. 品牌哲學區塊 */}
+      <div className="w-full bg-[#FAFAFA] py-32 px-6">
+        <div className="max-w-3xl mx-auto text-center opacity-0 animate-in fade-in slide-in-from-bottom-8 duration-1000 fill-mode-forwards" style={{ animationDelay: "300ms" }}>
+          <p className="text-[10px] font-sans tracking-[0.4em] uppercase text-black/40 mb-8">
+            The Philosophy
+          </p>
+          
+          <h2 className="font-display text-3xl md:text-5xl font-light leading-tight mb-16 text-black">
+            " 讓每一分優雅，<br className="md:hidden" />都在光彩中綻放。"
+          </h2>
 
-            {/* Brand Story Content */}
-            <div className="space-y-6 opacity-0 animate-in fade-in duration-700 fill-mode-forwards" style={{ animationDelay: "600ms" }}>
-              <p className="font-serif text-lg text-foreground/80 leading-relaxed">
-                C.GLOW 源於對光彩的執著與對優雅的追求。我們相信，每一件髮飾都應該続放獨特的光芒，讓佩戴者在任何時刻都能以最佳的狀態閥謝光彩。
-              </p>
-              
-              <p className="font-serif text-lg text-foreground/80 leading-relaxed">
-                我們精心挑選每一款設計、每一種材質，只為展現最優雅的髮飾系列。從經典到創新，從簡約到華麗，C.GLOW 提供多元選擇，讓您根據心情與場景自由搭配，展現獨一無二的個人風格。
-              </p>
-              
-              <p className="font-serif text-lg text-foreground/80 leading-relaxed">
-                「DREAMS COME TRUE」是我們的願景。透過 C.GLOW 的髮飾，我們希望幫助您在每一個重要時刻都能以最佳的光芒閥謝自己，讓自信與優雅成為您最好的配飾，讓每一個夢想都在光彩中綻放。
-              </p>
-              
-              <p className="font-serif text-base text-foreground/60 italic mt-8">
-                — 感謝您選擇 C.GLOW，一起閥謝光彩。
-              </p>
-            </div>
+          <div className="space-y-8 text-justify md:text-center">
+            <p className="font-serif text-sm md:text-lg text-black/60 leading-relaxed font-light">
+              C.GLOW 源於對光彩的執著與對優雅的追求。我們相信，每一件髮飾都應該成為展現獨特光芒的藝術品。
+            </p>
+            <p className="font-serif text-sm md:text-lg text-black/60 leading-relaxed font-light">
+              從經典輪廓到創新材質，我們摒棄多餘的裝飾，只留下最純粹的質感。讓佩戴者在任何時刻，都能以最從容的姿態閃耀。
+            </p>
           </div>
         </div>
       </div>
 
-      {/* Footer */}
-      <footer className="border-t border-border bg-card/50 py-8 mt-16">
-        <div className="container text-center">
-          <p className="font-serif text-sm text-foreground/60">
+      {/* 極簡 Footer */}
+      <footer className="w-full py-12 px-6 border-t border-black/10 bg-white">
+        <div className="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="text-[9px] md:text-[10px] font-sans tracking-[0.3em] uppercase text-black/40">
             © 2026 C.CHIC. All rights reserved.
           </p>
-          <p className="font-serif text-xs text-foreground/40 mt-2">
-            澄澄出品 · 優雅風格
+          <p className="text-[9px] md:text-[10px] font-sans tracking-[0.3em] uppercase text-black/40">
+            Design by 澄澄
           </p>
         </div>
       </footer>
 
-      {/* Animation Styles */}
+      {/* 極致平滑的純 CSS 動畫 */}
       <style>{`
-        @keyframes slide-in-from-bottom-4 {
-          from {
-            opacity: 0;
-            transform: translateY(1rem);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@300;400&display=swap');
+
+        .font-display { font-family: 'Cormorant Garamond', serif; }
+        .font-serif { font-family: 'Cormorant Garamond', serif; }
+        .font-sans { font-family: 'Inter', sans-serif; }
+
+        @keyframes slide-in-from-bottom-8 {
+          from { opacity: 0; transform: translateY(40px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes scroll-line {
+          0% { transform: scaleY(0); transform-origin: top; }
+          50% { transform: scaleY(1); transform-origin: top; }
+          50.1% { transform: scaleY(1); transform-origin: bottom; }
+          100% { transform: scaleY(0); transform-origin: bottom; }
+        }
+
+        .animate-scroll-line {
+          animation: scroll-line 2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
         }
 
         .animate-in {
-          animation: slide-in-from-bottom-4 forwards;
-        }
-
-        .slide-in-from-bottom-4 {
-          animation: slide-in-from-bottom-4 forwards;
+          animation: slide-in-from-bottom-8 forwards;
         }
 
         .fill-mode-forwards {
           animation-fill-mode: forwards;
-        }
-
-        .delay-100 {
-          animation-delay: 100ms;
-        }
-
-        .delay-200 {
-          animation-delay: 200ms;
         }
       `}</style>
     </div>
