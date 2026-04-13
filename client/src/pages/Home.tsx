@@ -62,6 +62,7 @@ export default function Home() {
       <div
         className="relative w-full h-[85vh] bg-cover bg-center bg-fixed flex flex-col justify-between"
         style={{
+          backgroundImage: `url('https://d2xsxph8kpxj0f.cloudfront.net/310519663542665447/iWexjsgpwWbWCoJ7e6xKKb/cglow-hero-bg_c6fe2f39.png')`,
           backgroundColor: '#F8F7F5',
         }}
       >
@@ -74,13 +75,6 @@ export default function Home() {
         </header>
 
         <div className="relative z-10 flex flex-col items-center justify-center flex-grow">
-          <div className="opacity-0 animate-in fade-in slide-in-from-bottom-8 duration-1000 fill-mode-forwards">
-            <img
-              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663542665447/iWexjsgpwWbWCoJ7e6xKKb/cglow-logo-luxury_771e6fa8.webp"
-              alt="C.GLOW Logo"
-              className="w-[350px] md:w-[550px] h-auto drop-shadow-xl"
-            />
-          </div>
         </div>
 
         {/* 底部滑動提示 */}
