@@ -54,7 +54,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-white text-black overflow-x-hidden selection:bg-black selection:text-white scroll-smooth">
+    <div className="relative min-h-screen bg-[#F8F7F5] text-[#3A3A3A] overflow-x-hidden selection:bg-[#3A3A3A] selection:text-white scroll-smooth">
       
       <h1 className="sr-only">C.CHIC / C.GLOW - 極簡優雅髮飾與精品配件品牌</h1>
 
@@ -62,13 +62,13 @@ export default function Home() {
       <div
         className="relative w-full h-[85vh] bg-cover bg-center bg-fixed flex flex-col justify-between"
         style={{
-          backgroundColor: '#F5F1E8',
+          backgroundColor: '#F8F7F5',
         }}
       >
         <div className="absolute inset-0 bg-white/5" />
 
         <header className="relative z-10 w-full p-8 flex justify-center opacity-0 animate-in fade-in duration-1000">
-          <p className="text-gray-600 text-xs tracking-[0.4em] uppercase font-light">
+          <p className="text-gray-500 text-xs tracking-[0.4em] uppercase font-light">
             Maison C.GLOW
           </p>
         </header>
@@ -76,9 +76,9 @@ export default function Home() {
         <div className="relative z-10 flex flex-col items-center justify-center flex-grow">
           <div className="opacity-0 animate-in fade-in slide-in-from-bottom-8 duration-1000 fill-mode-forwards">
             <img
-              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663542665447/iWexjsgpwWbWCoJ7e6xKKb/cglow-logo-adjusted-color_eafe298c.png"
+              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663542665447/iWexjsgpwWbWCoJ7e6xKKb/cglow-logo-luxury_771e6fa8.webp"
               alt="C.GLOW Logo"
-              className="w-[400px] md:w-[600px] h-auto drop-shadow-2xl"
+              className="w-[350px] md:w-[550px] h-auto drop-shadow-xl"
             />
           </div>
         </div>
