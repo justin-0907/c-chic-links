@@ -81,7 +81,7 @@ export default function Home() {
           {/* Brand Logo with Title */}
           <div className="mb-6 opacity-0 animate-in fade-in duration-700 fill-mode-forwards">
             <img
-              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663542665447/iWexjsgpwWbWCoJ7e6xKKb/cglow-logo_6dd5d121.png"
+              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663542665447/iWexjsgpwWbWCoJ7e6xKKb/cglow-logo-transparent_1c0761ac.png"
               alt="C.GLOW Logo"
               className="w-[584px] h-auto drop-shadow-lg pb-[100px]"
             />
