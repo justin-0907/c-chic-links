@@ -68,13 +68,14 @@ export default function LuxuryHome() {
           className="relative z-10 flex flex-col items-center justify-center flex-grow px-6"
         >
           {isLoaded && (
-            <motion.img
-              initial={{ scale: 1.1, opacity: 0, filter: "blur(24px)" }}
-              animate={{ scale: 1, opacity: 0.95, filter: "blur(0px)" }}
+            <motion.div
+              initial={{ opacity: 0, filter: "blur(24px)" }}
+              animate={{ opacity: 1, filter: "blur(0px)" }}
               transition={{ duration: 3, ease: luxuryEasing }}
-              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663542665447/iWexjsgpwWbWCoJ7e6xKKb/cglow-hero-bg_c6fe2f39.png"
-              alt="C.GLOW Logo"
-              className="w-[320px] md:w-[750px] h-auto object-contain mix-blend-multiply"
+              className="w-full h-full absolute inset-0 bg-cover bg-center"
+              style={{
+                backgroundImage: 'url(https://d2xsxph8kpxj0f.cloudfront.net/310519663542665447/iWexjsgpwWbWCoJ7e6xKKb/cglow-hero-luxury-final_dd8834ac.webp)',
+              }}
             />
           )}
         </motion.div>
