@@ -1,37 +1,50 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 /**
- * Maison C.GLOW - Ultimate Luxury Edition (Final Fixed)
- * * 修復：解決 Unterminated string constant 錯誤（補齊 className 引號）
- * * 排版：加寬標題容器，確保標語不隨意斷行。
- * * 動態：3秒電影級 Focus Pull 對焦開場。
+ * Maison C.GLOW - Image Centric & Classic E-commerce Header Layout
+ * * 導覽列：fixed 絕對置頂
+ * * 佈局：外層加入 pt-[132px] md:pt-[168px] 避免首圖被 fixed 選單遮擋
+ * * 修正：首圖使用「手機版/電腦版圖片分離」技術，手機直圖滿版，電腦橫圖滿版。
  */
 
 const luxuryEasing = [0.16, 1, 0.3, 1]; 
 
 const linkCards = [
-  { id: "website", subtitle: "DISCOVER THE COLLECTION", title: "官方網站", url: "https://cchic.shoplineapp.com/" },
-  { id: "instagram", subtitle: "LATEST INSPIRATION", title: "Instagram", url: "https://www.instagram.com/c.chic_official/" },
-  { id: "myship", subtitle: "CONVENIENT SHOPPING", title: "7-11 賣貨便", url: "https://myship.7-11.com.tw/general/detail/V2210202157530" },
-  { id: "line", subtitle: "CLIENT SERVICES", title: "官方 Line", url: "https://line.me/R/ti/p/@c.chic" },
+  { id: "website", title: "官方網站", url: "https://cchic.shoplineapp.com/" },
+  { id: "instagram", title: "Instagram", url: "https://www.instagram.com/c.chic_official/" },
+  { id: "myship", title: "7-11 賣貨便", url: "https://myship.7-11.com.tw/general/detail/V2210202157530" },
+  { id: "line", title: "官方 Line", url: "https://line.me/R/ti/p/@c.chic" },
+];
+
+// --- 關鍵修改：定義電腦版與手機版的首圖 ---
+const heroImages = {
+  // 電腦版橫圖 (你原本的圖)
+  desktop: "https://images.pexels.com/photos/2122362/pexels-photo-2122362.jpeg",
+  // 手機版直圖 (請換成你們自己拍攝的直立版商品圖，這裡先用高畫質直圖佔位)
+  mobile: "https://images.pexels.com/photos/29858713/pexels-photo-29858713.jpeg"
+};
+
+const galleryImages = [
+  "https://images.pexels.com/photos/28834218/pexels-photo-28834218.jpeg?auto=compress&cs=tinysrgb&w=1200",
+  "https://images.pexels.com/photos/10632861/pexels-photo-10632861.jpeg?auto=compress&cs=tinysrgb&w=1200",
+  "https://images.pexels.com/photos/19480676/pexels-photo-19480676.jpeg?auto=compress&cs=tinysrgb&w=1200",
+  "https://images.pexels.com/photos/19480677/pexels-photo-19480677.jpeg?auto=compress&cs=tinysrgb&w=1200",
+  "https://images.pexels.com/photos/15679652/pexels-photo-15679652.jpeg?auto=compress&cs=tinysrgb&w=1200"
 ];
 
 export default function LuxuryHome() {
   const [isLoaded, setIsLoaded] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // 滾動視差
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"]
   });
   
-  const yLogo = useTransform(scrollYProgress, [0, 1], [0, -250]);
-  const opacityLogo = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const yHero = useTransform(scrollYProgress, [0, 1], [0, 200]);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoaded(true), 150);
@@ -39,134 +52,112 @@ export default function LuxuryHome() {
   }, []);
 
   return (
-    <div ref={containerRef} className="relative min-h-screen bg-[#FCFCFC] text-[#1A1A1A] overflow-x-hidden selection:bg-[#1A1A1A] selection:text-white scroll-smooth">
+    <div ref={containerRef} className="relative min-h-screen bg-[#FCFCFC] text-[#1A1A1A] overflow-x-hidden selection:bg-[#1A1A1A] selection:text-white scroll-smooth pt-[132px] md:pt-[168px]">
       
-      {/* 氛圍背景光暈 */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[90vw] h-[90vh] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-zinc-100/60 via-[#FCFCFC]/20 to-transparent pointer-events-none -z-10 blur-3xl" />
-
-      {/* --- 1. HERO SECTION (電影開場) --- */}
-      <div className="relative w-full h-[100vh] flex flex-col justify-between">
+      {/* --- 1. 雙層頂部導覽列 --- */}
+      <header className="w-full z-50 fixed top-0 left-0 bg-[#FBFBF9] shadow-sm flex flex-col">
+        <div className="py-6 md:py-8 flex justify-center items-center">
+          <h1 className="text-zinc-800 text-xl md:text-3xl tracking-[0.3em] uppercase font-light font-display">
+            Maison C.GLOW
+          </h1>
+        </div>
         
-        <header className="relative z-20 w-full p-10 flex justify-center overflow-hidden">
-          <AnimatePresence>
-            {isLoaded && (
-              <motion.p 
-                initial={{ y: "100%", opacity: 0, filter: "blur(5px)" }}
-                animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
-                transition={{ duration: 2, ease: luxuryEasing, delay: 0.8 }}
-                className="text-zinc-400 text-[10px] tracking-[0.6em] uppercase font-light"
+        <div className="w-full bg-[#8c8581] py-3 md:py-4 px-4">
+          <div className="max-w-5xl mx-auto flex flex-wrap justify-center gap-6 md:gap-14">
+            {linkCards.map((link) => (
+              <a 
+                key={link.id} 
+                href={link.url} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-[13px] md:text-[15px] font-sans tracking-[0.1em] text-white hover:text-zinc-200 hover:underline underline-offset-4 transition-all duration-300"
               >
-                Maison C.GLOW
-              </motion.p>
-            )}
-          </AnimatePresence>
-        </header>
+                {link.title}
+              </a>
+            ))}
+          </div>
+        </div>
+      </header>
 
-        {/* 核心對焦動態 */}
+      {/* --- 2. 首圖 HERO SECTION --- */}
+      {/* 恢復為較高的高度 h-[70vh] md:h-[80vh]，讓手機版畫面更大氣 */}
+      <div className="relative w-full h-[70vh] md:h-[80vh] overflow-hidden flex flex-col items-center justify-end pb-8 md:pb-12 bg-zinc-100">
         <motion.div 
-          style={{ y: yLogo, opacity: opacityLogo }}
-          className="relative z-10 flex flex-col items-center justify-center flex-grow px-6"
+          style={{ y: yHero }}
+          className="absolute inset-0 z-0 flex items-center justify-center"
         >
           {isLoaded && (
-            <motion.div
-              initial={{ opacity: 0, filter: "blur(24px)" }}
-              animate={{ opacity: 1, filter: "blur(0px)" }}
-              transition={{ duration: 3, ease: luxuryEasing }}
-              className="w-full h-full absolute inset-0 bg-cover bg-center"
-              style={{
-                backgroundImage: 'url(https://d2xsxph8kpxj0f.cloudfront.net/310519663542665447/iWexjsgpwWbWCoJ7e6xKKb/cglow-hero-luxury-final_dd8834ac.webp)',
-              }}
-            />
+            <>
+              {/* 手機版直圖 (md:hidden 表示在平板以上尺寸隱藏) */}
+              <motion.img
+                initial={{ opacity: 0, filter: "blur(12px)", scale: 1.02 }}
+                animate={{ opacity: 1, filter: "blur(0px)", scale: 1 }}
+                transition={{ duration: 2, ease: luxuryEasing }}
+                src={heroImages.mobile}
+                alt="Maison C.GLOW Hero Mobile"
+                className="w-full h-full object-cover md:hidden mix-blend-multiply"
+              />
+              
+              {/* 電腦版橫圖 (hidden md:block 表示只在平板以上尺寸顯示) */}
+              <motion.img
+                initial={{ opacity: 0, filter: "blur(12px)", scale: 1.02 }}
+                animate={{ opacity: 1, filter: "blur(0px)", scale: 1 }}
+                transition={{ duration: 2, ease: luxuryEasing }}
+                src={heroImages.desktop}
+                alt="Maison C.GLOW Hero Desktop"
+                className="hidden md:block w-full h-full object-cover mix-blend-multiply"
+              />
+            </>
           )}
         </motion.div>
 
-        {/* 底部滾動按鈕 */}
-        <a 
-          href="#explore"
-          className="relative z-20 w-full pb-16 flex flex-col items-center justify-center cursor-pointer group opacity-80 hover:opacity-100 transition-opacity"
-        >
+        <a href="#gallery" className="relative z-20 flex flex-col items-center justify-center cursor-pointer group opacity-90 hover:opacity-100 transition-opacity">
           <motion.p 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 2, delay: 2.2 }}
-            className="text-zinc-400 text-[9px] tracking-[0.4em] uppercase mb-8 font-sans group-hover:text-zinc-600 transition-colors"
+            transition={{ duration: 2, delay: 1 }}
+            className="text-white font-medium text-[10px] tracking-[0.4em] uppercase mb-4 font-sans drop-shadow-md"
           >
-            Scroll to explore
+            Explore Collection
           </motion.p>
-          <div className="w-[1px] h-20 bg-zinc-200 overflow-hidden">
+          <div className="w-[1px] h-12 md:h-16 bg-white/50 overflow-hidden relative shadow-sm">
             <motion.div 
               initial={{ y: "-100%" }}
               animate={{ y: "100%" }}
-              transition={{ 
-                repeat: Infinity, 
-                duration: 2.5, 
-                ease: [0.77, 0, 0.175, 1],
-              }}
-              className="w-full h-full bg-zinc-500"
+              transition={{ repeat: Infinity, duration: 2.5, ease: [0.77, 0, 0.175, 1] }}
+              className="absolute w-full h-full bg-white"
             />
           </div>
         </a>
       </div>
 
-      {/* --- 2. 導覽清單 --- */}
-      <div id="explore" className="w-full max-w-5xl mx-auto px-6 py-32 md:py-48 relative z-20 bg-[#FCFCFC]">
-        <div className="flex flex-col w-full border-t border-zinc-200">
-          {linkCards.map((card, index) => (
-            <motion.a
-              key={card.id}
-              href={card.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              initial="initial"
-              whileInView="animate"
-              whileHover="hover"
+      {/* --- 3. 圖片畫廊 Image Gallery --- */}
+      <div id="gallery" className="w-full max-w-[1600px] mx-auto px-4 md:px-8 py-20 md:py-32 relative z-20 bg-[#FCFCFC]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          {galleryImages.map((src, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-10%" }}
-              variants={{
-                initial: { opacity: 0, y: 30, filter: "blur(8px)" },
-                animate: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 1.5, ease: luxuryEasing, delay: index * 0.15 } }
-              }}
-              className="group relative w-full border-b border-zinc-200 py-12 md:py-16 flex flex-col md:flex-row md:justify-between md:items-center overflow-hidden cursor-pointer bg-[#FCFCFC]"
+              transition={{ duration: 1.2, ease: luxuryEasing, delay: index * 0.1 }}
+              className="relative aspect-[4/5] overflow-hidden group bg-zinc-100 cursor-pointer"
             >
-              <motion.div 
-                variants={{
-                  initial: { y: "101%" },
-                  hover: { y: "0%" }
-                }}
+              <motion.img
+                whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.8, ease: luxuryEasing }}
-                className="absolute inset-0 bg-[#1A1A1A] z-0" 
+                src={src}
+                alt={`Collection Image ${index + 1}`}
+                className="w-full h-full object-cover"
               />
-
-              <div className="relative z-10 flex flex-col pointer-events-none px-4 md:px-8">
-                <motion.span 
-                  variants={{ hover: { color: "#A1A1AA" } }}
-                  className="text-[9px] md:text-[10px] font-sans tracking-[0.4em] uppercase text-zinc-400 mb-3 md:mb-5 transition-colors duration-500"
-                >
-                  {card.subtitle}
-                </motion.span>
-                <h3 className="font-display text-3xl md:text-5xl font-light text-[#1A1A1A] group-hover:text-white transition-colors duration-700">
-                  {card.title}
-                </h3>
-              </div>
-
-              <div className="relative z-10 mt-8 md:mt-0 px-4 md:px-8 flex justify-end pointer-events-none">
-                <motion.div
-                  variants={{
-                    initial: { x: -20, opacity: 0 },
-                    hover: { x: 0, opacity: 1, color: "#FFFFFF" }
-                  }}
-                  transition={{ duration: 0.8, ease: luxuryEasing }}
-                  className="text-[#1A1A1A] opacity-40 md:opacity-0"
-                >
-                  <ArrowRight strokeWidth={1} className="w-8 h-8 md:w-10 md:h-10" />
-                </motion.div>
-              </div>
-            </motion.a>
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
+            </motion.div>
           ))}
         </div>
       </div>
 
-      {/* --- 3. 品牌哲學 (排版優化版) --- */}
-      <div className="w-full bg-white py-48 px-6 relative z-20">
+      {/* --- 4. 品牌哲學 --- */}
+      <div className="w-full bg-white py-32 md:py-48 px-6 relative z-20">
         <motion.div 
           initial={{ opacity: 0, y: 50, filter: "blur(10px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -195,7 +186,7 @@ export default function LuxuryHome() {
         </motion.div>
       </div>
 
-      {/* 頁尾 */}
+      {/* --- 頁尾 --- */}
       <footer className="w-full py-16 px-6 bg-[#FCFCFC] relative z-20">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 border-t border-zinc-100 pt-16">
           <p className="text-[9px] font-sans tracking-[0.4em] uppercase text-zinc-400">
