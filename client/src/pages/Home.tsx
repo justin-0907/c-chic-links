@@ -169,10 +169,10 @@ export default function LuxuryHome() {
             The Philosophy
           </p>
           
-          <h2 className="font-display text-3xl md:text-5xl font-light leading-snug mb-24 text-[#1A1A1A] tracking-tight">
-            <span className="italic text-zinc-400 font-serif mr-3 opacity-50">"</span> 
-            <span className="md:whitespace-nowrap font-light">讓每一分優雅，都在光彩中綻放。</span>
-            <span className="italic text-zinc-400 font-serif ml-3 opacity-50">"</span>
+        <h2 className="font-display flex items-center justify-center whitespace-nowrap text-[25px] sm:text-xl md:text-5xl font-light leading-snug mb-24 text-[#1A1A1A] tracking-tight">
+            <span className="italic text-zinc-400 font-serif mr-2 md:mr-3 opacity-50 text-xl md:text-5xl">"</span> 
+            <span className="font-light">讓每一分優雅，都在光彩中綻放。</span>
+            <span className="italic text-zinc-400 font-serif ml-2 md:ml-3 opacity-50 text-xl md:text-5xl">"</span>
           </h2>
 
           <div className="space-y-12 text-justify md:text-center px-4 max-w-2xl mx-auto">
